@@ -51,7 +51,6 @@
                 }
                 else if (preg_match("/[0-9]+/", $number, $matches))
                 {
-                    print $matches[0];
                     $number = $matches[0];
                 }
                 else

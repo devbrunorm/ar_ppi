@@ -1,32 +1,25 @@
 <?php
     require_once("classes/monetaryValue.php");
     final class Product {
+        private int $id;
+        private string $name;
+        private MonetaryValue $price;
         private string $code;
-        private string $description;
-        protected MonetaryValue $price;
+        private string $expiration_date;
+        private string $manufacturer;
         private float|int $quantity;
+        private string $description;
 
-        public function __construct(string $code, string $description, float|int $quantity, float|int|string $price)
+        public function __construct(int $id, string $name, float|int|string $price, string $code, string $expiration_date, string $manufacturer, float|int $quantity, string $description)
         {
-            $this->setCode($code);
-            $this->setDescription($description);
-            $this->setQuantity($quantity);
+            $this->id = $id;
+            $this->name = $name;
             $this->setPrice($price);
-        }
-
-        public function setCode(string $value)
-        {
-            $this->code = $value;
-        }
-
-        public function setDescription(string $value)
-        {
-            $this->description = $value;
-        }
-
-        public function setQuantity(float|int $value)
-        {
-            $this->quantity = $value;
+            $this->code = $code;
+            $this->expiration_date = $expiration_date;
+            $this->manufacturer = $manufacturer;
+            $this->quantity = $quantity;
+            $this->description = $description;
         }
 
         public function setPrice(float|int|string $value)
