@@ -1,13 +1,12 @@
 <?php
-    require_once("controllers/Product.php");
-    require_once("View/Components/TextInputField.php");
-    require_once("View/Components/TextAreaField.php");
+    require_once("../app/views/components/TextInputField.php");
+    require_once("../app/views/components/TextAreaField.php");
 ?>
 
 <div class="container border align-middle">
     <h1>Adicionar Produto</h1>
     <hr>
-    <form method="POST" action="controllers/Product.php?q=insert">
+    <form method="POST" action="add">
         <div class="row">
             <?php 
                 $input_name = new TextInputField("w-50 p-3", "name", "name", "Produto", "Nome do produto:", "Nome");
