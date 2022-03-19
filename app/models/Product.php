@@ -47,6 +47,22 @@ class Product
             return $result;
     }
 
+    public static function view($id) {
+        $product = Product::query("SELECT id, name, price, code, expiration_date, manufacturer, quantity, description FROM product WHERE id = $id");
+        $product = $product->fetchAll()[0];
+        $product = new Product(
+            $product["id"], 
+            $product["name"], 
+            $product["price"], 
+            $product["code"],
+            $product["expiration_date"],
+            $product["manufacturer"],
+            $product["quantity"],
+            $product["description"]
+        );
+        return $product;
+    }
+
     public static function listAll() {
         $products = Product::query("SELECT id, name, price, code, expiration_date, manufacturer, quantity, description FROM product");
         $products = $products->fetchAll();
@@ -80,6 +96,41 @@ class Product
         try{
             $product = Product::query("INSERT INTO product(name, price, code, expiration_date, manufacturer, quantity, description) 
             VALUES ('$product->name', $product->price, '$product->code', $product->expiration_date, $product->manufacturer, NULL, $product->description);");
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+    }
+
+    public static function update($request) {
+        $request["expiration_date"] = (($request["expiration_date"] == null) || ($request["expiration_date"] == "")) ? "NULL" : $request["expiration_date"]; 
+        $request["manufacturer"]    = (($request["manufacturer"] == null) || ($request["manufacturer"])) ? "NULL" : $request["manufacturer"];
+        // $request["quantity"]        = ($request["quantity"] == null) ? "NULL" : $request["quantity"];
+        $request["description"]     = (($request["description"] == null) || ($request["description"] == "")) ? "NULL" : $request["description"];
+
+        $product = new Product($request["id"], $request["name"], $request["price"], $request["code"], $request["expiration_date"], 
+        $request["manufacturer"], null, $request["description"]);
+
+        try{
+            $product = Product::query("UPDATE product SET 
+            name = '$product->name', 
+            price = $product->price,
+            code = '$product->code', 
+            expiration_date = $product->expiration_date, 
+            manufacturer = $product->manufacturer, 
+            quantity = NULL, 
+            description = $product->description
+            WHERE id = $product->id");
+            return $product;
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+    }
+
+    public static function delete($id) {
+        try{
+            $product = Product::query("DELETE FROM product WHERE id=$id;");
         }
         catch(Exception $e){
             echo $e;
