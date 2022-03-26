@@ -30,45 +30,45 @@
             echo $textarea_description->html;
         ?>
         <div class="row">
-            <button class="btn btn-success w-25 m-3" onclick="add()">Adicionar</button>
+            <input class="btn btn-success w-25 m-3" type="submit" value="Adicionar">
             <button type="button" class="btn btn-danger w-25 m-3" onclick="returnToIndex()">Cancelar</button>
         </div>
     </form>
 </div>
 <script>
-    function add() {
-        var name = $("input[name*='name']").val();
-        var price = $("input[name*='price']").val();
-        var code = $("input[name*='code']").val();
-        var expiration_date = $("input[name*='expiration-date']").val();
-        var manufacturer = $("input[name*='manufacturer']").val();
-        var description = $("#description").val();
+    // function add() {
+    //     var name = $("input[name*='name']").val();
+    //     var price = $("input[name*='price']").val();
+    //     var code = $("input[name*='code']").val();
+    //     var expiration_date = $("input[name*='expiration-date']").val();
+    //     var manufacturer = $("input[name*='manufacturer']").val();
+    //     var description = $("#description").val();
 
-        $.ajax({
-            type: 'POST',
-            url: window.location.href,
-            data: { 
-                "name" : name,
-                "price" : price,
-                "code" : code,
-                "expiration_date" : expiration_date,
-                "manufacturer" : manufacturer,
-                "description" : description
-            },
-            success: function(data){
-                alert("Adicionado com sucesso!");
-                returnToIndex();
-            }
-        });
-    }
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: window.location.href,
+    //         data: { 
+    //             "name" : name,
+    //             "price" : price,
+    //             "code" : code,
+    //             "expiration_date" : expiration_date,
+    //             "manufacturer" : manufacturer,
+    //             "description" : description
+    //         },
+    //         success: function(data){
+    //             alert("Adicionado com sucesso!");
+    //             returnToIndex();
+    //         }
+    //     });
+    // }
 
     function returnToIndex() {
         $.ajax({
             type: 'GET',
-            url: "index",
+            url: 'http://localhost/ar_ppi/public/product/index',
             data: {},
             success: function(data){
-                window.location.href = "index";
+                window.location.href = 'http://localhost/ar_ppi/public/product/index';
             }
         });
     }

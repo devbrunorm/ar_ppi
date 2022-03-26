@@ -20,7 +20,7 @@ class ProductController extends Controller
             $request = $_POST;
             $request["price"] = MonetaryValue::string_to_value($request["price"]);
             Product::insert($request);
-            $this->index();
+            header("Location: http://localhost/ar_ppi/public/product/index");
         }
     }
 
@@ -33,10 +33,10 @@ class ProductController extends Controller
         {
             $request = $_POST;
             $request["price"] = MonetaryValue::string_to_value($request["price"]);
-            $product = Product::update($request);
-            $response_array['status'] = 'success';
-            $response_attay['product'] = $product;
-            return json_encode($response_array);
+            $request["expiration_date"] = $request["expiration-date"];
+            var_dump($request);
+            Product::update($request);
+            header("Location: http://localhost/ar_ppi/public/product/index");
         }
     }
 

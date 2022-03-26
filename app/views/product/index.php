@@ -37,10 +37,10 @@
     function addProduct() {
         $.ajax({
             type: 'GET',
-            url: "add",
+            url: 'http://localhost/ar_ppi/public/product/add',
             data: {},
             success: function(data){
-                window.location.href = "add";
+                window.location.href = 'http://localhost/ar_ppi/public/product/add';
             }
         });
     }
@@ -48,12 +48,12 @@
     function editProductId(id) {
         $.ajax({
             type: 'GET',
-            url: "edit/"+id,
+            url: 'http://localhost/ar_ppi/public/product/edit'+id,
             data: { 
                 "id" : id
             },
             success: function(data){
-                window.location.href = "edit/"+id;
+                window.location.href = 'http://localhost/ar_ppi/public/product/edit'+id;
             }
         });
     }

@@ -8,9 +8,9 @@
 
 <div class="container border align-middle">
     <h1>Editar Produto <?= $id ?></h1>
-    <input hidden value="<?= $id ?>" id="id" />
     <hr>
-    <form method="POST" action="edit/<?= $product->id ?>">
+    <form method="POST" action="../edit/<?= $product->id ?>">
+        <input hidden value="<?= $id ?>" id="id" name="id" />
         <div class="row">
             <?php 
                 $input_name = new TextInputField("w-50 p-3", "name", "name", "Produto", "Nome do produto:", '<i class="fa-solid fa-box"></i>', $product->name);
@@ -34,47 +34,47 @@
             echo $textarea_description->html;
         ?>
         <div class="row">
-            <button type="button" class="btn btn-success w-25 m-3" onclick="edit()">Editar</button>
+            <input class="btn btn-success w-25 m-3" type="submit" value="Editar">
             <button type="button" class="btn btn-danger w-25 m-3" onclick="returnToIndex()">Cancelar</button>
         </div>
     </form>
 </div>
 <script>
-    function edit() {
-        var id = $("#id").val();
-        var name = $("input[name*='name']").val();
-        var price = $("input[name*='price']").val();
-        var code = $("input[name*='code']").val();
-        var expiration_date = $("input[name*='expiration-date']").val();
-        var manufacturer = $("input[name*='manufacturer']").val();
-        var description = $("#description").val();
+    // function edit() {
+    //     var id = $("#id").val();
+    //     var name = $("input[name*='name']").val();
+    //     var price = $("input[name*='price']").val();
+    //     var code = $("input[name*='code']").val();
+    //     var expiration_date = $("input[name*='expiration-date']").val();
+    //     var manufacturer = $("input[name*='manufacturer']").val();
+    //     var description = $("#description").val();
 
-        $.ajax({
-            type: 'POST',
-            url: window.location.href,
-            data: { 
-                "id" : id,
-                "name" : name,
-                "price" : price,
-                "code" : code,
-                "expiration_date" : expiration_date,
-                "manufacturer" : manufacturer,
-                "description" : description
-            },
-            success: function(data){
-                alert("Atualizado com sucesso!");
-                returnToIndex();
-            }
-        });
-    }
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: window.location.href,
+    //         data: { 
+    //             "id" : id,
+    //             "name" : name,
+    //             "price" : price,
+    //             "code" : code,
+    //             "expiration_date" : expiration_date,
+    //             "manufacturer" : manufacturer,
+    //             "description" : description
+    //         },
+    //         success: function(data){
+    //             alert("Atualizado com sucesso!");
+    //             returnToIndex();
+    //         }
+    //     });
+    // }
 
     function returnToIndex() {
         $.ajax({
             type: 'GET',
-            url: "../index",
+            url: 'http://localhost/ar_ppi/public/product/index',
             data: {},
             success: function(data){
-                window.location.href = "../index";
+                window.location.href = 'http://localhost/ar_ppi/public/product/index';
             }
         });
     }
