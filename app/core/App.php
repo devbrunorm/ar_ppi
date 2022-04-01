@@ -37,7 +37,11 @@ class App
     {
         if(isset($_GET['url']))
         {
-            return $url = explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
+            if (isset($_SESSION["username"]) || $_GET['url'] == "user/login" || $_GET['url'] == "user/register" || $_POST['url'] == "user/login" || $_POST['url'] == "user/register") {
+                return $url = explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
+            } else {
+                header("Location: http://localhost/ar_ppi/public/user/login");
+            }
         }
     }
 }

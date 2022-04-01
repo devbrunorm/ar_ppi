@@ -110,5 +110,18 @@ class User
             echo $e;
         }
     }
+
+    public static function validate_login($username, $password) {
+        $login_valido = false;
+
+        $result = User::query("SELECT * FROM user WHERE username = '$username' AND password = '$password'");
+
+        if($result->rowCount() > 0 ) 
+        {
+            $login_valido = true;
+        }
+
+        return $login_valido;
+    }
 }
 ?>

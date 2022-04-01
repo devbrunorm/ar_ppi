@@ -14,6 +14,19 @@ require_once("../app/views/components/PasswordField.php");
         ?>
         <div class="row">
             <input class="btn btn-success w-25 m-3" type="submit" value="Login">
+            <button type="button" class="btn btn-primary w-25 m-3" onclick="register()">Registra-se</button>
         </div>
     </form>
 </div>
+<script>
+    function register() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost/ar_ppi/public/user/register',
+            data: {},
+            success: function(data){
+                window.location.href = 'http://localhost/ar_ppi/public/user/register';
+            }
+        });
+    }
+</script>

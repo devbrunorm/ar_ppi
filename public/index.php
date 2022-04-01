@@ -11,6 +11,7 @@
     </head>
     <body>
         <?php
+            session_start();
             require_once '../app/views/components/Navbar.php';
             require_once '../app/init.php';
         ?>

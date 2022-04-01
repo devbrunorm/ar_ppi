@@ -43,18 +43,34 @@ class UserController extends Controller
     }
 
     public function login() {
-        $this->view('user/login', []);
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') 
+        {
+            $this->view('user/login', []);
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            if (User::validate_login($_POST["username"], $_POST["password"])) {
+                $_SESSION["username"] = $_POST["username"];
+                header("Location: http://localhost/ar_ppi/public/home/index");
+            } else {
+                header("Location: http://localhost/ar_ppi/public/user/login");
+            }
+        }
+    }
+
+    public function logout() {
+        session_destroy();
+        header("Location: http://localhost/ar_ppi/public/user/login");
     }
 
     public function register() {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') 
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') 
         {
             $this->view('user/register', []);
         } 
-        else if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') 
         {
             $request = $_POST;
-            var_dump($request);
             User::insert($request);
             header("Location: http://localhost/ar_ppi/public/user/index");
         }
