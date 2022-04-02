@@ -7,6 +7,7 @@
     <thead clas="table-borderless">
         <tr>
         <th scope="col">ID</th>
+        <th scope="col">Nome</th>
         <th scope="col">Usuário</th>
         <th scope="col">Ações</th>
         </tr>
@@ -15,6 +16,7 @@
         <?php foreach($data["users"] as $user): ?>
             <tr>
                 <th scope="row"><?php echo $user->id ?></th>
+                <td><?php echo $user->name?$user->name:"-" ?></td>
                 <td><?php echo $user->username ?></td>
                 <td>
                     <button type="button" class="btn btn-warning" onclick="editUserId(<?= $user->id ?>)"><i class="fa-solid fa-pen-to-square"></i></button>

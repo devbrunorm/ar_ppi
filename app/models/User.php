@@ -3,12 +3,14 @@ require_once '../app/core/PDO.php';
 class User
 {
     public $id;
+    public $name;
     public $username;
     public $password;
 
-    public function __construct($id,$username,$password)
+    public function __construct($id,$name,$username,$password)
     {
         $this->id              = $id; 
+        $this->name              = $name; 
         $this->username        = $username;
         $this->password        = $password;
     }
@@ -25,6 +27,7 @@ class User
             $cnx->exec(
             "CREATE TABLE IF NOT EXISTS user (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+                name VARCHAR(50) NOT NULL,
                 username VARCHAR(50) NOT NULL,
                 password VARCHAR(50) NOT NULL)"
             );
@@ -33,10 +36,11 @@ class User
     }
 
     public static function view($id) {
-        $user = User::query("SELECT id, username FROM user WHERE id = $id");
+        $user = User::query("SELECT id, name, username FROM user WHERE id = $id");
         $user = $user->fetchAll()[0];
         $user = new User(
             $user["id"], 
+            $user["name"],
             $user["username"],
             null
         );
@@ -44,12 +48,13 @@ class User
     }
 
     public static function listAll() {
-        $users = User::query("SELECT id, username FROM user");
+        $users = User::query("SELECT id, name, username FROM user");
         $users = $users->fetchAll();
         $users_array=[];
         foreach ($users as $result_user){
             $result_user = new User(
                 $result_user["id"],
+                $result_user["name"],
                 $result_user["username"],
                 null
             );
@@ -59,10 +64,10 @@ class User
     }
 
     public static function insert($request) {
-        $product = new User(null, $request["username"], $request["password"]);
+        $product = new User(null, $request["name"], $request["username"], $request["password"]);
 
         try{
-            $product = User::query("INSERT INTO user(username, password) VALUES ('$product->username', '$product->password');");
+            $product = User::query("INSERT INTO user(name, username, password) VALUES ('$product->name', '$product->username', '$product->password');");
         }
         catch(Exception $e){
             echo $e;
@@ -70,13 +75,13 @@ class User
     }
 
     public static function update($request) {
-      $user = new User($request["id"], $request["username"], $request["password"]);
+      $user = new User($request["id"], $request["name"], $request["username"], $request["password"]);
       if (empty($request["password"])) {
         try
         {
-          echo "UPDATE user SET username = '$product->username' WHERE id = $product->id";
           $user = User::query("UPDATE user SET 
-          username = '$user->username'
+          username = '$user->username',
+          name = '$user->name'
           WHERE id = $user->id");
           return $user;
         }
@@ -90,6 +95,7 @@ class User
         try
         {
           $user = User::query("UPDATE user SET 
+          name = '$user->name',
           username = '$user->username', 
           password = '$user->password'
           WHERE id = $user->id");
@@ -112,13 +118,13 @@ class User
     }
 
     public static function validate_login($username, $password) {
-        $login_valido = false;
+        $login_is_valid = false;
 
         $result = User::query("SELECT * FROM user WHERE username = '$username' AND password = '$password'");
 
         if($result->rowCount() > 0 ) 
         {
-            $login_valido = true;
+            $login_is_valid = true;
         }
 
         return $login_valido;
