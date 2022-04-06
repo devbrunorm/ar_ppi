@@ -127,7 +127,7 @@ class User
             $login_is_valid = true;
         }
 
-        return $login_valido;
+        return $login_is_valid;
     }
 }
 ?>

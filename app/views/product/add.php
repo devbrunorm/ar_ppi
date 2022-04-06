@@ -36,32 +36,6 @@
     </form>
 </div>
 <script>
-    // function add() {
-    //     var name = $("input[name*='name']").val();
-    //     var price = $("input[name*='price']").val();
-    //     var code = $("input[name*='code']").val();
-    //     var expiration_date = $("input[name*='expiration-date']").val();
-    //     var manufacturer = $("input[name*='manufacturer']").val();
-    //     var description = $("#description").val();
-
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: window.location.href,
-    //         data: { 
-    //             "name" : name,
-    //             "price" : price,
-    //             "code" : code,
-    //             "expiration_date" : expiration_date,
-    //             "manufacturer" : manufacturer,
-    //             "description" : description
-    //         },
-    //         success: function(data){
-    //             alert("Adicionado com sucesso!");
-    //             returnToIndex();
-    //         }
-    //     });
-    // }
-
     function returnToIndex() {
         $.ajax({
             type: 'GET',

@@ -10,6 +10,13 @@ class ProductController extends Controller
         $this->view('product/index', ["products" => $products]);
     }
 
+    public function show($id)
+    {   
+        $product = Product::show($id);
+
+        $this->view('product/show', ["product" => $product]);
+    }
+
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -19,6 +26,7 @@ class ProductController extends Controller
         {
             $request = $_POST;
             $request["price"] = MonetaryValue::string_to_value($request["price"]);
+            $request["expiration_date"] = $request["expiration-date"];
             Product::insert($request);
             header("Location: http://localhost/ar_ppi/public/product/index");
         }
@@ -34,7 +42,6 @@ class ProductController extends Controller
             $request = $_POST;
             $request["price"] = MonetaryValue::string_to_value($request["price"]);
             $request["expiration_date"] = $request["expiration-date"];
-            var_dump($request);
             Product::update($request);
             header("Location: http://localhost/ar_ppi/public/product/index");
         }

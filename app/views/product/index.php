@@ -19,8 +19,8 @@
         <?php foreach($data["products"] as $product): ?>
             <tr>
                 <th scope="row"><?php echo $product->id ?></th>
-                <td><?php echo $product->code ?></td>
-                <td><?php echo $product->name ?></td>
+                <td><a href="http://localhost/ar_ppi/public/product/show/<?= $product->id ?>"><?php echo $product->code ?></a></td>
+                <td><a href="http://localhost/ar_ppi/public/product/show/<?= $product->id ?>"><?php echo $product->name ?></a></td>
                 <td><?php echo "R$ ".MonetaryValue::value_to_string($product->price) ?></td>
                 <td><?php echo $product->manufacturer?$product->manufacturer:"-" ?></td>
                 <td><?php echo $product->description?$product->description:"-" ?></td>
@@ -48,12 +48,25 @@
     function editProductId(id) {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost/ar_ppi/public/product/edit'+id,
+            url: 'http://localhost/ar_ppi/public/product/edit/'+id,
             data: { 
                 "id" : id
             },
             success: function(data){
-                window.location.href = 'http://localhost/ar_ppi/public/product/edit'+id;
+                window.location.href = 'http://localhost/ar_ppi/public/product/edit/'+id;
+            }
+        });
+    }
+
+    function showProductId(id) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost/ar_ppi/public/product/show/'+id,
+            data: { 
+                "id" : id
+            },
+            success: function(data){
+                window.location.href = 'http://localhost/ar_ppi/public/product/show/'+id;
             }
         });
     }

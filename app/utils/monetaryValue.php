@@ -16,8 +16,12 @@
         }
 
         public static function string_to_value(string $string) {
-            $monetaryString = strval(round($string, 2)); 
-            return round(floatval(MonetaryValue::dot_format($monetaryString)), 2);
+            if (preg_match('/[0-9]*\,+[0-9]*/', $string) > 0) {
+                $value = floatval(preg_replace('/\,{1}/', ".", $string));
+            } else if (preg_match('/[0-9]*\.+[0-9]*/', $string) > 0) {
+                $value = floatval($string);
+            }
+            return round($value, 2); 
         }
 
         public static function value_to_string(int|float $value) {
