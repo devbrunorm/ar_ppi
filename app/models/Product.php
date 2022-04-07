@@ -8,10 +8,9 @@ class Product
     public $code;
     public $expiration_date;
     public $manufacturer;
-    public $quantity;
     public $description;
 
-    public function __construct($id,$name,$price,$code,$expiration_date,$manufacturer,$quantity,$description)
+    public function __construct($id,$name,$price,$code,$expiration_date,$manufacturer,$description)
     {
         $this->id              = $id; 
         $this->name            = $name;
@@ -19,7 +18,6 @@ class Product
         $this->code            = $code;
         $this->expiration_date = $expiration_date;
         $this->manufacturer    = $manufacturer;
-        $this->quantity        = $quantity;
         $this->description     = $description;
     }
 
@@ -40,7 +38,6 @@ class Product
                 code VARCHAR(50) NOT NULL,
                 expiration_date DATE,
                 manufacturer VARCHAR(50),
-                quantity DECIMAL(10,5),
                 description TEXT)"
             );
             $result = $cnx->query($sql);
@@ -48,7 +45,7 @@ class Product
     }
 
     public static function show($id) {
-        $product = Product::query("SELECT id, name, price, code, expiration_date, manufacturer, quantity, description FROM product WHERE id = $id");
+        $product = Product::query("SELECT id, name, price, code, expiration_date, manufacturer, description FROM product WHERE id = $id");
         $product = $product->fetchAll()[0];
         $product = new Product(
             $product["id"], 
@@ -57,14 +54,13 @@ class Product
             $product["code"],
             $product["expiration_date"],
             $product["manufacturer"],
-            $product["quantity"],
             $product["description"]
         );
         return $product;
     }
 
     public static function listAll() {
-        $products = Product::query("SELECT id, name, price, code, expiration_date, manufacturer, quantity, description FROM product");
+        $products = Product::query("SELECT id, name, price, code, expiration_date, manufacturer, description FROM product");
         $products = $products->fetchAll();
         $products_array=[];
         foreach ($products as $result_product){
@@ -75,7 +71,6 @@ class Product
                 $result_product["code"],
                 $result_product["expiration_date"],
                 $result_product["manufacturer"],
-                $result_product["quantity"],
                 $result_product["description"]
             );
             array_push($products_array, $result_product);
@@ -88,10 +83,27 @@ class Product
         $request["manufacturer"]    = (($request["manufacturer"] == null) || ($request["manufacturer"] == "")) ? "NULL" : $request["manufacturer"];
         $request["description"]     = (($request["description"] == null) || ($request["description"] == "")) ? "NULL" : $request["description"];
         $product = new Product(null, $request["name"], $request["price"], $request["code"], $request["expiration-date"], 
-        $request["manufacturer"], null, $request["description"]);
+            $request["manufacturer"], $request["description"]);
+
+        $query_1 = "INSERT INTO product(name, price, code";
+        $query_2 = ") VALUES ('$product->name', $product->price, '$product->code'";
+        $query_3 = ");";
+
+        if ($product->expiration_date != "NULL") {
+            $query_1 = $query_1.", expiration_date";
+            $query_2 = $query_2.", '$product->expiration_date'";
+        }
+        if ($product->manufacturer != "NULL") {
+            $query_1 = $query_1.", manufacturer";
+            $query_2 = $query_2.", '$product->manufacturer'";
+        }
+        if ($product->description != "NULL") {
+            $query_1 = $query_1.", description";
+            $query_2 = $query_2.", '$product->description'";
+        }
+
         try {
-            $product = Product::query("INSERT INTO product(name, price, code, expiration_date, manufacturer, quantity, description) 
-            VALUES ('$product->name', $product->price, '$product->code', '$product->expiration_date', '$product->manufacturer', NULL, '$product->description');");
+            $product = Product::query($query_1.$query_2.$query_3);
         }
         catch(Exception $e){
             echo $e;
@@ -104,16 +116,26 @@ class Product
         $request["description"]     = (($request["description"] == null) || ($request["description"] == "")) ? "NULL" : $request["description"];
 
         $product = new Product($request["id"], $request["name"], $request["price"], $request["code"], $request["expiration-date"], 
-        $request["manufacturer"], null, $request["description"]);
+            $request["manufacturer"], $request["description"]);
+
+        if ($product->expiration_date != "NULL") {
+            $product->expiration_date = '\''.$product->expiration_date.'\''; 
+        }
+        if ($product->manufacturer != "NULL") {
+            $product->manufacturer = '\''.$product->manufacturer.'\'';
+        }
+        if ($product->description != "NULL") {
+            $product->description = '\''.$product->description.'\'';
+        }
+
         try {
             $product = Product::query("UPDATE product SET 
             name = '$product->name', 
             price = $product->price,
             code = '$product->code', 
-            expiration_date = '$product->expiration_date', 
-            manufacturer = '$product->manufacturer', 
-            quantity = NULL, 
-            description = '$product->description'
+            expiration_date = $product->expiration_date, 
+            manufacturer = $product->manufacturer,  
+            description = $product->description
             WHERE id = $product->id");
             return $product;
         }

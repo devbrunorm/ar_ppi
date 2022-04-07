@@ -12,7 +12,7 @@
 ?>
 
 <div class="container border align-middle">
-    <h1>Visualisar Produto <?= $id ?></h1>
+    <h1>Visualisar Produto</h1>
     <hr>
     <form method="POST" action="../edit/<?= $product->id ?>">
         <input hidden value="<?= $id ?>" id="id" name="id" />

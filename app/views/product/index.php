@@ -25,6 +25,7 @@
                 <td><?php echo $product->manufacturer?$product->manufacturer:"-" ?></td>
                 <td><?php echo $product->description?$product->description:"-" ?></td>
                 <td>
+                    <button type="button" class="btn btn-info" onclick="showProductId(<?= $product->id ?>)"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <button type="button" class="btn btn-warning" onclick="editProductId(<?= $product->id ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
                     <button type="button" class="btn btn-danger" onclick="deleteProductId(<?= $product->id ?>)"><i class="fa-solid fa-trash"></i></button>
                 </td>

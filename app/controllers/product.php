@@ -28,7 +28,7 @@ class ProductController extends Controller
             $request["price"] = MonetaryValue::string_to_value($request["price"]);
             $request["expiration_date"] = $request["expiration-date"];
             Product::insert($request);
-            header("Location: http://localhost/ar_ppi/public/product/index");
+            // header("Location: http://localhost/ar_ppi/public/product/index");
         }
     }
 
@@ -43,7 +43,7 @@ class ProductController extends Controller
             $request["price"] = MonetaryValue::string_to_value($request["price"]);
             $request["expiration_date"] = $request["expiration-date"];
             Product::update($request);
-            header("Location: http://localhost/ar_ppi/public/product/index");
+            // header("Location: http://localhost/ar_ppi/public/product/index");
         }
     }
 

@@ -12,21 +12,21 @@
 ?>
 
 <div class="container border align-middle">
-    <h1>Editar Produto <?= $id ?></h1>
+    <h1>Editar Produto</h1>
     <hr>
     <form method="POST" action="../edit/<?= $product->id ?>">
         <input hidden value="<?= $id ?>" id="id" name="id" />
         <div class="row">
             <?php 
-                $input_name = new TextInputField("w-50 p-3", "name", "name", "Produto", "Nome do produto:", '<i class="fa-solid fa-box"></i>', $product->name);
-                $input_price = new TextInputField("w-50 p-3", "price", "price", "Preço", "Preço:", "R$", MonetaryValue::value_to_string($product->price));
+                $input_name = new TextInputField("w-50 p-3", "name", "name", "Produto", "Nome do produto:", '<i class="fa-solid fa-box"></i>', $product->name, false, true);
+                $input_price = new TextInputField("w-50 p-3", "price", "price", "Preço", "Preço:", "R$", MonetaryValue::value_to_string($product->price), false, true);
                 echo $input_name->html;
                 echo $input_price->html;
             ?>
         </div>
         <div class="row">
             <?php 
-                $input_code = new TextInputField("w-25 p-3", "code", "code", "000000000", "Código de barras:", '<i class="fa-solid fa-barcode"></i>', $product->code);
+                $input_code = new TextInputField("w-25 p-3", "code", "code", "000000000", "Código de barras:", '<i class="fa-solid fa-barcode"></i>', $product->code, false, true);
                 $input_expiration_date = new TextInputField("w-25 p-3", "expiration-date", "expiration-date", "01/01/2000", "Data de Validade:", '<i class="fa-solid fa-tag"></i>', $product->expiration_date);
                 $input_manufacturer = new TextInputField("w-50 p-3", "manufacturer", "manufacturer", "Companhia LTDA.", "Fabricante", '<i class="fa-solid fa-screwdriver"></i>', $product->manufacturer);
                 echo $input_code->html;

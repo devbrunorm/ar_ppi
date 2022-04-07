@@ -20,6 +20,8 @@
                 $value = floatval(preg_replace('/\,{1}/', ".", $string));
             } else if (preg_match('/[0-9]*\.+[0-9]*/', $string) > 0) {
                 $value = floatval($string);
+            } else if (preg_match('/[0-9]*/', $string) > 0) {
+                $value = floatval($string);
             }
             return round($value, 2); 
         }

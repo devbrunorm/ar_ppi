@@ -9,15 +9,15 @@
     <form method="POST" action="add">
         <div class="row">
             <?php 
-                $input_name = new TextInputField("w-50 p-3", "name", "name", "Produto", "Nome do produto:", '<i class="fa-solid fa-box"></i>');
-                $input_price = new TextInputField("w-50 p-3", "price", "price", "Preço", "Preço:", "R$");
+                $input_name = new TextInputField("w-50 p-3", "name", "name", "Produto", "Nome do produto:", '<i class="fa-solid fa-box"></i>', null, false, true);
+                $input_price = new TextInputField("w-50 p-3", "price", "price", "Preço", "Preço:", "R$", null, false, true);
                 echo $input_name->html;
                 echo $input_price->html;
             ?>
         </div>
         <div class="row">
             <?php 
-                $input_code = new TextInputField("w-25 p-3", "code", "code", "000000000", "Código de barras:", '<i class="fa-solid fa-barcode"></i>');
+                $input_code = new TextInputField("w-25 p-3", "code", "code", "000000000", "Código de barras:", '<i class="fa-solid fa-barcode"></i>', null, false, true);
                 $input_expiration_date = new TextInputField("w-25 p-3", "expiration-date", "expiration-date", "01/01/2000", "Data de Validade:", '<i class="fa-solid fa-tag"></i>');
                 $input_manufacturer = new TextInputField("w-50 p-3", "manufacturer", "manufacturer", "Companhia LTDA.", "Fabricante", '<i class="fa-solid fa-screwdriver"></i>');
                 echo $input_code->html;

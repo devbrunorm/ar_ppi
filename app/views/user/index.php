@@ -19,6 +19,7 @@
                 <td><a href="http://localhost/ar_ppi/public/user/show/<?= $user->id ?>"><?php echo $user->username ?></a></td>
                 <td><?php echo $user->name?$user->name:"-" ?></td>
                 <td>
+                    <button type="button" class="btn btn-info" onclick="showUserId(<?= $user->id ?>)"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <button type="button" class="btn btn-warning" onclick="editUserId(<?= $user->id ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
                     <?php if ($user->id != $_SESSION["id"]) { ?>
                         <button type="button" class="btn btn-danger" onclick="deleteUserId(<?= $user->id ?>)"><i class="fa-solid fa-trash"></i></button>

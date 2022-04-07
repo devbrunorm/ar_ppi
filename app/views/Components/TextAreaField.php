@@ -27,7 +27,7 @@ class TextAreaField {
                     <div class="input-group-prepend">
                         <span class="input-group-text">'.$span.'</span>
                     </div>
-                    <textarea class="form-control" aria-label="'.$placeholder.'" id="'.$id.'" name="'.$name.' "'.$this->read_only.'></textarea>
+                    <textarea class="form-control" aria-label="'.$placeholder.'" id="'.$id.'" name="'.$name.'" '.$this->read_only.'></textarea>
                 </div>
             </div>';
         } else {
@@ -37,7 +37,7 @@ class TextAreaField {
                     <div class="input-group-prepend">
                         <span class="input-group-text">'.$span.'</span>
                     </div>
-                    <textarea class="form-control" aria-label="'.$placeholder.'" id="'.$id.'" name="'.$name.' "'.$this->read_only.'>'.$value.'</textarea>
+                    <textarea class="form-control" aria-label="'.$placeholder.'" id="'.$id.'" name="'.$name.'" '.$this->read_only.'>'.$value.'</textarea>
                 </div>
             </div>';
         }
