@@ -8,13 +8,14 @@ class PasswordField {
     private string $span;
     private string $html;
 
-    public function __construct($div_class, $id, $name, $placeholder, $label, $span, $value = null)
+    public function __construct($div_class, $id, $name, $placeholder, $label, $span, $required = false)
     {
         $this->div_class = $div_class;
         $this->id = $id;
         $this->placeholder = $placeholder;
         $this->label = $label;
         $this->span = $span;
+        $this->required = $required?'required ':'';
         $this->html =  '<div class="'.$div_class.'">
             <label for="'.$id.'">'.$label.'</label>
             <div class="input-group mb-3">
@@ -23,7 +24,7 @@ class PasswordField {
                         '.$span.'
                     </span>
                 </div>
-                <input type="password" class="form-control" placeholder="'.$placeholder.'" aria-label="'.$placeholder.'" aria-describedby="$id" name="'.$name.'">
+                <input type="password" class="form-control" placeholder="'.$placeholder.'" aria-label="'.$placeholder.'" aria-describedby="$id" '.$this->required.'name="'.$name.'">
             </div>
         </div>';
     }

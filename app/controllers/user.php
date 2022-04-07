@@ -10,6 +10,13 @@ class UserController extends Controller
         $this->view('user/index', ["users" => $users]);
     }
 
+    public function show($id)
+    {   
+        $user = User::show($id);
+
+        $this->view('user/show', ["user" => $user]);
+    }
+
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -51,6 +58,7 @@ class UserController extends Controller
         {
             if (User::validate_login($_POST["username"], $_POST["password"])) {
                 $_SESSION["username"] = $_POST["username"];
+                $_SESSION["id"] = User::get_id($_SESSION["username"]);
                 header("Location: http://localhost/ar_ppi/public/home/index");
             } else {
                 header("Location: http://localhost/ar_ppi/public/user/login");

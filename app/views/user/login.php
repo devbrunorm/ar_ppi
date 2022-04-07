@@ -7,8 +7,8 @@ require_once("../app/views/components/PasswordField.php");
     <hr>
     <form method="POST" action="login">
         <?php 
-            $input_username = new TextInputField("w-100 p-3", "username", "username", "Usuário", "Usuário:", '<i class="fa-solid fa-user"></i>');
-            $input_password = new PasswordField("w-100 p-3", "password", "password", "Senha", "Senha:", '<i class="fa-solid fa-lock"></i>');
+            $input_username = new TextInputField("w-100 p-3", "username", "username", "Usuário", "Usuário:", '<i class="fa-solid fa-user"></i>', null, false, true);
+            $input_password = new PasswordField("w-100 p-3", "password", "password", "Senha", "Senha:", '<i class="fa-solid fa-lock"></i>', true);
             echo $input_username->html;
             echo $input_password->html;
         ?>

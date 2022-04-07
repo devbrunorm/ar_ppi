@@ -35,7 +35,7 @@ class User
             return $result;
     }
 
-    public static function view($id) {
+    public static function show($id) {
         $user = User::query("SELECT id, name, username FROM user WHERE id = $id");
         $user = $user->fetchAll()[0];
         $user = new User(
@@ -64,10 +64,10 @@ class User
     }
 
     public static function insert($request) {
-        $product = new User(null, $request["name"], $request["username"], $request["password"]);
+        $user = new User(null, $request["name"], $request["username"], $request["password"]);
 
         try{
-            $product = User::query("INSERT INTO user(name, username, password) VALUES ('$product->name', '$product->username', '$product->password');");
+            $user = User::query("INSERT INTO user(name, username, password) VALUES ('$user->name', '$user->username', '$user->password');");
         }
         catch(Exception $e){
             echo $e;
@@ -75,37 +75,38 @@ class User
     }
 
     public static function update($request) {
-      $user = new User($request["id"], $request["name"], $request["username"], $request["password"]);
-      if (empty($request["password"])) {
-        try
-        {
-          $user = User::query("UPDATE user SET 
-          username = '$user->username',
-          name = '$user->name'
-          WHERE id = $user->id");
-          return $user;
-        }
-        catch(Exception $e)
-        {
-          echo $e;
+        var_dump($request);
+        $user = new User($request["id"], $request["name"], $request["username"], $request["password"]);
+        if (empty($request["password"])) {
+            try
+            {
+            $user = User::query("UPDATE user SET 
+            username = '$user->username',
+            name = '$user->name'
+            WHERE id = $user->id");
+            return $user;
+            }
+            catch(Exception $e)
+            {
+            echo $e;
+            } 
         } 
-      } 
-      else 
-      {
-        try
+        else 
         {
-          $user = User::query("UPDATE user SET 
-          name = '$user->name',
-          username = '$user->username', 
-          password = '$user->password'
-          WHERE id = $user->id");
-          return $user;
+            try
+            {
+            $user = User::query("UPDATE user SET 
+            name = '$user->name',
+            username = '$user->username', 
+            password = '$user->password'
+            WHERE id = $user->id");
+            return $user;
+            }
+            catch(Exception $e)
+            {
+            echo $e;
+            } 
         }
-        catch(Exception $e)
-        {
-          echo $e;
-        } 
-      }
     }
 
     public static function delete($id) {
@@ -115,6 +116,11 @@ class User
         catch(Exception $e){
             echo $e;
         }
+    }
+
+    public static function get_id($username) {
+        $result = User::query("SELECT id FROM user WHERE username = '$username'");
+        return $result->fetchAll()[0]["id"];
     }
 
     public static function validate_login($username, $password) {

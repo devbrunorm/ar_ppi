@@ -8,7 +8,7 @@ class TextInputField {
     private string $span;
     private string $html;
 
-    public function __construct($div_class, $id, $name, $placeholder, $label, $span, $value = null, $read_only = False)
+    public function __construct($div_class, $id, $name, $placeholder, $label, $span, $value = null, $read_only = false, $required = false)
     {
         $this->div_class = $div_class;
         $this->id = $id;
@@ -16,7 +16,8 @@ class TextInputField {
         $this->label = $label;
         $this->span = $span;
         $this->value = $value;
-        $this->read_only = $read_only?'readonly':'';
+        $this->read_only = $read_only?'readonly ':'';
+        $this->required = $required?'required ':'';
         
         if ($value==null){
             $this->html =  '<div class="'.$div_class.'">
@@ -27,7 +28,7 @@ class TextInputField {
                             '.$span.'
                         </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="'.$placeholder.'" aria-label="'.$placeholder.'" aria-describedby="$id" name="'.$name.' "'.$this->read_only.'>
+                    <input type="text" class="form-control" placeholder="'.$placeholder.'" aria-label="'.$placeholder.'" aria-describedby="$id" name="'.$name.'" '.$this->read_only.$this->required.'>
                 </div>
             </div>';
         } else {
@@ -39,7 +40,7 @@ class TextInputField {
                             '.$span.'
                         </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="'.$placeholder.'" aria-label="'.$placeholder.'" aria-describedby="$id" name="'.$name.' "'.$this->read_only.' value="'.$value.'">
+                    <input type="text" class="form-control" placeholder="'.$placeholder.'" aria-label="'.$placeholder.'" aria-describedby="$id" name="'.$name.'" '.$this->read_only.$this->required.'value="'.$value.'">
                 </div>
             </div>';
         }
