@@ -64,7 +64,7 @@ class User
     }
 
     public static function insert($request) {
-        $user = new User(null, $request["name"], $request["username"], $request["password"]);
+        $user = new User(null, $request["name"], $request["username"], md5($request["password"]));
 
         try{
             $user = User::query("INSERT INTO user(name, username, password) VALUES ('$user->name', '$user->username', '$user->password');");
@@ -93,6 +93,7 @@ class User
         } 
         else 
         {
+            $user->password = md5($user->password);
             try
             {
             $user = User::query("UPDATE user SET 
@@ -118,14 +119,16 @@ class User
         }
     }
 
-    public static function get_id($username) {
-        $result = User::query("SELECT id FROM user WHERE username = '$username'");
+    public static function get_id($username, $password) {
+        $password = md5($password);
+        $result = User::query("SELECT id FROM user WHERE username = '$username' AND password = '$password'");
         return $result->fetchAll()[0]["id"];
     }
 
     public static function validate_login($username, $password) {
         $login_is_valid = false;
 
+        $password = md5($password);
         $result = User::query("SELECT * FROM user WHERE username = '$username' AND password = '$password'");
 
         if($result->rowCount() > 0 ) 

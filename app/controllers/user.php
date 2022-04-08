@@ -58,7 +58,7 @@ class UserController extends Controller
         {
             if (User::validate_login($_POST["username"], $_POST["password"])) {
                 $_SESSION["username"] = $_POST["username"];
-                $_SESSION["id"] = User::get_id($_SESSION["username"]);
+                $_SESSION["id"] = User::get_id($_SESSION["username"], $_POST["password"]);
                 header("Location: http://localhost/ar_ppi/public/home/index");
             } else {
                 header("Location: http://localhost/ar_ppi/public/user/login");
