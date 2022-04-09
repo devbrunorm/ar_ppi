@@ -56,10 +56,10 @@ Ao clicar no botão "Adicionar" no cabeçalho da listagem de Produtos ou "Cadast
 
 Caso algum dos campos obrigatórios não sejam preenchidos, o próprio formulário indicará o campo vazio e pedirá o usuário o informe. Caso contrário, o produto será adicionado a base de dados e o usuário será rediricionado à listagem dos Produtos.
 
-Caso queira cancelar a ação e retronar a listagem, basta clicar no botão "Cancelar" ao final do formulário.
+Caso queira cancelar a ação e retornar a listagem, basta clicar no botão "Cancelar" ao final do formulário.
 
 ### Editar
-Ao clicar no botão de ação "Editar" de um produto em específico dentro da listagem de Produtos, você será redicionado ao formulário de edição deste produto. Nessa tela, você se deparará com um formulário idêntico ao da tela "Adicionar", porém os valores dos campos estão preenchidos com os atributos daquele respectivo produto. Caso deseje alterar alguma informação, basta modificar os valores nos campos, contudo os campos que são obrigatórios no formulário de "Adicionar" também são obrigatórios aqui.
+Ao clicar no botão de ação "Editar" de um produto em específico dentro da listagem de Produtos, você será redirecionado ao formulário de edição deste produto. Nessa tela, você se deparará com um formulário idêntico ao da tela "Adicionar", porém os valores dos campos estão preenchidos com os atributos daquele respectivo produto. Caso deseje alterar alguma informação, basta modificar os valores nos campos, contudo os campos que são obrigatórios no formulário de "Adicionar" também são obrigatórios aqui.
 
 Ao finalizar a edição, basta clicar no botão "Editar" ao final do formulário. O registro será alterado no banco de dados e o usuário retornará à listagem de Produtos. Caso deseja cancelar a operação, basta clicar no botão "Cancelar" ao final do formulário e você será redirecionado à listagem também.
 
@@ -68,3 +68,61 @@ Caso deseje deletar algum produto em específico, navegue até a listagem de Pro
 
 ### Visualizar
 Para visualizar um produto, acesse a listagem de produtos. Cada registro possuirá um botão de "Visualizar" no seu menu de ações ou um link em seu nome e código. Clicando em uma dessas opções, você será encaminhado para um formulário idêntico ao da tela de "Editar", porém os campos serão apenas para visualização, não permitindo a alteração de seus valores. Após visualizar o formulário, o usuário pode clicar no botão "Retornar" para voltar até a listagem.
+
+## Usuários
+Já que foi demandado um sistema de login e registro, decidi adicionar um CRUD de usuário também para ajudar a gerenciar os usários que podem ou não acessar o sistema.
+
+### Listagem
+Ao clicar no item "Usuários" na Navbar ou em "Gerenciar usuários" no Menu Inicial, você será direcionado para uma listagem completa de usuários com seu nomes e <i>usernames</i> e com botões de ação para visualizar, editar ou remover um usuário em específico (desde que não seja o próprio usuário logado). Além disso, no cabeçalho da tabela, existe um botão para adicionar novos usuários sem ter que deslogar e cadastrá-lo.
+
+### Adicionar
+Ao clicar no botão "Adicionar" no cabeçalho da listagem de Usuário, você será redicionado ao formulário de adição de usuários. Dentro dele, você deve preencher os campos dos usuários e clicar no botão "Adicionar" ao final do formulário. Entre os campos, alguns são <b>obrigatórios</b> sendo esses representados em negrito:
+
+<ul>
+<li>Nome: Nome do produto a ser adiconado</li>
+<li><b>Username:</b> Valor que o produto é comecializado em R$. Nesse campo, o valor poder ser digitado com o dígito separador sendo vírgula (,) ou ponto(.). Em casos de valores inteiros, não necessita se digitar as casas decimais com 0</li>
+<li><b>Senha:</b> Código com o qual o produto é identificado pelo cliente</li>
+</ul>
+
+Caso algum dos campos obrigatórios não sejam preenchidos, o próprio formulário indicará o campo vazio e pedirá o usuário o informe. Caso contrário, o usuário informado será adicionado a base de dados e o usuário logado será rediricionado à listagem dos Usuários.
+
+Caso queira cancelar a ação e retornar a listagem, basta clicar no botão "Cancelar" ao final do formulário.
+
+### Editar
+Ao clicar no botão de ação "Editar" de um usuário em específico dentro da listagem de Usuários, você será redirecionado ao formulário de edição deste produto. Nessa tela, você se deparará com um formulário idêntico ao da tela "Adicionar", porém os valores dos campos estão preenchidos com os atributos daquele respectivo usuário (com exceção da senha por questões de segurança e privacidade). Caso deseje alterar alguma informação, basta modificar os valores nos campos, contudo os campos que são obrigatórios no formulário de "Adicionar" também são obrigatórios aqui (novamente, com exceção da senha, pois ela vem vazia por padrão).
+
+Ao finalizar a edição, basta clicar no botão "Editar" ao final do formulário. O registro será alterado no banco de dados e o usuário retornará à listagem de Usuário. Caso deseja cancelar a operação, basta clicar no botão "Cancelar" ao final do formulário e você será redirecionado à listagem também.
+
+### Deletar
+Caso deseje deletar algum usuário em específico (desde não seja o próprio usuário logado), navegue até a listagem de Usuários e clique na ação de "Deletar" do registro do produto que se deseje remover. Quando clicar no botão, uma caixa de alerta aparecerá no canto superior da tela pedindo para confirmar a ação. Caso o usuário confirme, o registro será deletado do banco de dados e a página será recarregada. Caso contrário, o processo é cancelado e o registro não é deletado.
+
+### Visualizar
+Para visualizar um usuário, acesse a listagem de Usuários. Cada registro possuirá um botão de "Visualizar" no seu menu de ações ou um link em seu nome e código. Clicando em uma dessas opções, você será encaminhado para um formulário idêntico ao da tela de "Editar", porém os campos serão apenas para visualização, não permitindo a alteração de seus valores. Após visualizar o formulário, o usuário pode clicar no botão "Retornar" para voltar até a listagem.
+
+### Login
+Essa tela aparecerá apenas se o usuário estiver deslogado e estiver tentando acessar o sistema. Com isso, o usuário deverá informar um username e senha válidos com base nos usuários cadastrados no banco de dados. Se os dois foram válidos, o sistema criará uma sessão e liberará o acesso para esse usuário. Caso contrário, a tela apenas será recarregada, até o usuário informar um login válido.
+
+Nesta tela também existe a opção de "Registrar", caso o usuário não tenha uma conta.
+
+### Registrar
+Essa tela só é acessível se o usuário estiver deslogado e clicar no botão "Registrar" na tela de login. Aqui um usuário que não tenha cadastro no sistema pode se cadastrar. O formulário é idêntico ao presente na tela de "Adicionar", portanto os campos presentes e quais são obrigatórios acabam sendo os mesmos. Após cadastra-se o usuário é redirecionado para a tela de login.
+
+### Logout
+Para sair do sistema, existem duas opções:
+<ul>
+<li>No botão "Logout" na <i>home</i></li>
+<li>Na <i>Navbar</i> no link "Logout" à direita do username</li>
+</ul>
+
+Ao clica em uma dessas opções, uma caixa de alerta aparecerá confirmando se deseja deslogar. Se for confirmado, o processo é realizado, a sessão é finalizada e o usuário será redicionado a tela de login. Caso contrário, o processo é cancelado.
+
+## Referências
+<a href="https://www.php.net/docs.php">Documentação Oficial do PHP</a>
+
+<a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">Documentação Oficial do Bootstrap</a>
+
+<a href="https://api.jquery.com">Documentação Oficial do jQuery</a>
+
+<a href="https://fontawesome.com/docs">Documentação Oficial do Font Awesome</a>
+
+<a href="https://www.youtube.com/watch?v=OsCTzGASImQ&list=PLfdtiltiRHWGXVHXX09fxXDi-DqInchFD">Playlist utilizada para gerar o formato MVC no PHP</a>
