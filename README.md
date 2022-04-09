@@ -34,7 +34,7 @@ http://localhost/ar_ppi/public/home/index
 
 Se for a primeira vez que está acessando o sistema ou tiver reiniciado o servidor, você se deparará com uma tela de Login. Você não sairá dela até ser autenticado corretamente. Caso você não tinha uma conta, clique no botão de se registrar, crie sua conta e faça o login.
 
-Pronto, com isso, você terá acesso ao sistema desenvolvido. A navegação por ele pode ser feita através da Navbar no canto superior ou através do botões em tela.
+Pronto, com isso, você terá acesso ao sistema desenvolvido. A navegação por ele pode ser feita através da Navbar no canto superior ou através dos botões em tela.
 
 ## Produtos
 Como demandado, foi desenvolvido um CRUD de produtos. Com isso, podemos visualizar, adicionar, atualizar ou remover produtos.
@@ -43,18 +43,18 @@ Como demandado, foi desenvolvido um CRUD de produtos. Com isso, podemos visualiz
 Ao clicar no item "Produtos" na Navbar ou em "Consultar produtos" no Menu Inicial, você será direcionado para uma listagem completa de produtos com suas principais informações e com botões de ação para visualizar, editar ou remover um produto em específico. Além disso, no cabeçalho da tabela, existe um botão para adicionar novos produtos.
 
 ### Adicionar
-Ao clicar no botão "Adicionar" no cabeçalho da listagem de Produtos ou "Cadastrar novo produto" no menu inicial, você será redicionado ao formulário de adição de produtos. Dentro dele, você deve preencher os campos dos produtos e clicar no botão "Adicionar" ao final do formulário. Entre os campos, alguns são <b>obrigatórios</b> sendo esses representados em negrito:
+Ao clicar no botão "Adicionar" no cabeçalho da listagem de Produtos ou "Cadastrar novo produto" no menu inicial, você será redirecionado ao formulário de adição de produtos. Dentro dele, você deve preencher os campos dos produtos e clicar no botão "Adicionar" ao final do formulário. Entre os campos, alguns são <b>obrigatórios</b> sendo esses representados em negrito:
 
 <ul>
-<li><b>Nome:</b> Nome do produto a ser adiconado</li>
-<li><b>Preço:</b> Valor que o produto é comecializado em R$. Nesse campo, o valor poder ser digitado com o dígito separador sendo vírgula (,) ou ponto(.). Em casos de valores inteiros, não necessita se digitar as casas decimais com 0</li>
+<li><b>Nome:</b> Nome do produto a ser adicionado</li>
+<li><b>Preço:</b> Valor que o produto é comercializado em R$. Nesse campo, o valor poder ser digitado com o dígito separador sendo vírgula (,) ou ponto(.). Em casos de valores inteiros, não necessita se digitar as casas decimais com 0</li>
 <li><b>Código:</b> Código com o qual o produto é identificado pelo cliente</li>
-<li>Vencimento: Nesse campo se informa a data de validade do produto, caso seja conviente. Neste campo, a data deve ser preenchida no formato "dd/mm/yyyy"</li>
+<li>Vencimento: Nesse campo se informa a data de validade do produto, caso seja conveniente. Neste campo, a data deve ser preenchida no formato "dd/mm/yyyy"</li>
 <li>Fabricante: Nome do fabricante do produto</li>
 <li>Descrição: Informações extras que não estão presentes no formulário</li>
 </ul>
 
-Caso algum dos campos obrigatórios não sejam preenchidos, o próprio formulário indicará o campo vazio e pedirá o usuário o informe. Caso contrário, o produto será adicionado a base de dados e o usuário será rediricionado à listagem dos Produtos.
+Caso algum dos campos obrigatórios não sejam preenchidos, o próprio formulário indicará o campo vazio e pedirá o usuário o informe. Caso contrário, o produto será adicionado a base de dados e o usuário será redirecionado à listagem dos Produtos.
 
 Caso queira cancelar a ação e retornar a listagem, basta clicar no botão "Cancelar" ao final do formulário.
 
@@ -70,21 +70,21 @@ Caso deseje deletar algum produto em específico, navegue até a listagem de Pro
 Para visualizar um produto, acesse a listagem de produtos. Cada registro possuirá um botão de "Visualizar" no seu menu de ações ou um link em seu nome e código. Clicando em uma dessas opções, você será encaminhado para um formulário idêntico ao da tela de "Editar", porém os campos serão apenas para visualização, não permitindo a alteração de seus valores. Após visualizar o formulário, o usuário pode clicar no botão "Retornar" para voltar até a listagem.
 
 ## Usuários
-Já que foi demandado um sistema de login e registro, decidi adicionar um CRUD de usuário também para ajudar a gerenciar os usários que podem ou não acessar o sistema.
+Já que foi demandado um sistema de login e registro, decidi adicionar um CRUD de usuário também para ajudar a gerenciar os usuários que podem ou não acessar o sistema.
 
 ### Listagem
-Ao clicar no item "Usuários" na Navbar ou em "Gerenciar usuários" no Menu Inicial, você será direcionado para uma listagem completa de usuários com seu nomes e <i>usernames</i> e com botões de ação para visualizar, editar ou remover um usuário em específico (desde que não seja o próprio usuário logado). Além disso, no cabeçalho da tabela, existe um botão para adicionar novos usuários sem ter que deslogar e cadastrá-lo.
+Ao clicar no item "Usuários" na Navbar ou em "Gerenciar usuários" no Menu Inicial, você será direcionado para uma listagem completa de usuários com seus nomese <i>usernames</i> e com botões de ação para visualizar, editar ou remover um usuário em específico (desde que não seja o próprio usuário logado). Além disso, no cabeçalho da tabela, existe um botão para adicionar novos usuários sem ter que deslogar e cadastrá-lo.
 
 ### Adicionar
-Ao clicar no botão "Adicionar" no cabeçalho da listagem de Usuário, você será redicionado ao formulário de adição de usuários. Dentro dele, você deve preencher os campos dos usuários e clicar no botão "Adicionar" ao final do formulário. Entre os campos, alguns são <b>obrigatórios</b> sendo esses representados em negrito:
+Ao clicar no botão "Adicionar" no cabeçalho da listagem de Usuário, você será redirecionado ao formulário de adição de usuários. Dentro dele, você deve preencher os campos dos usuários e clicar no botão "Adicionar" ao final do formulário. Entre os campos, alguns são <b>obrigatórios</b> sendo esses representados em negrito:
 
 <ul>
-<li>Nome: Nome do produto a ser adiconado</li>
-<li><b>Username:</b> Valor que o produto é comecializado em R$. Nesse campo, o valor poder ser digitado com o dígito separador sendo vírgula (,) ou ponto(.). Em casos de valores inteiros, não necessita se digitar as casas decimais com 0</li>
-<li><b>Senha:</b> Código com o qual o produto é identificado pelo cliente</li>
+<li>Nome: Nome completo do usuário</li>
+<li><b>Username:</b> Login que o usuário utilizará durante o processo de login</li>
+<li><b>Senha:</b> Senha que o usuário utilizará no login</li>
 </ul>
 
-Caso algum dos campos obrigatórios não sejam preenchidos, o próprio formulário indicará o campo vazio e pedirá o usuário o informe. Caso contrário, o usuário informado será adicionado a base de dados e o usuário logado será rediricionado à listagem dos Usuários.
+Caso algum dos campos obrigatórios não sejam preenchidos, o próprio formulário indicará o campo vazio e pedirá o usuário o informe. Caso contrário, o usuário informado será adicionado a base de dados e o usuário logado será redirecionado à listagem dos Usuários.
 
 Caso queira cancelar a ação e retornar a listagem, basta clicar no botão "Cancelar" ao final do formulário.
 
@@ -114,7 +114,7 @@ Para sair do sistema, existem duas opções:
 <li>Na <i>Navbar</i> no link "Logout" à direita do username</li>
 </ul>
 
-Ao clica em uma dessas opções, uma caixa de alerta aparecerá confirmando se deseja deslogar. Se for confirmado, o processo é realizado, a sessão é finalizada e o usuário será redicionado a tela de login. Caso contrário, o processo é cancelado.
+Ao clica em uma dessas opções, uma caixa de alerta aparecerá confirmando se deseja deslogar. Se for confirmado, o processo é realizado, a sessão é finalizada e o usuário será redirecionado a tela de login. Caso contrário, o processo é cancelado.
 
 ## Referências
 <a href="https://www.php.net/docs.php">Documentação Oficial do PHP</a>
